@@ -23,12 +23,6 @@
 (defun read-text-file (string) 
 (let ((stream (open (merge-pathnames om::*OM-AIS-path* (parse-namestring (concatenate 'string string ".txt"))))))
 (string-to-list stream))) 
-
-(defun s-AIS (label)
-(let ((AIS-list (read-text-file "AIS-list")))  
-(loop for list in AIS-list
-      when (equal (first list) label)
-          return (second list))))
       
 (defun list-mod-12 (input-lists)
   (loop
@@ -66,6 +60,13 @@
 	:doc "Returns R-AIS."
 (retrograde AIS))
 
+(om::defmethod! RI-AIS ((AIS list))
+        :initvals '( '(0 1 3 2 7 10 8 4 11 5 9 6) )
+	:indoc '("AIS") 
+	:icon 04
+	:doc "Returns RI-AIS."
+(inversion (retrograde AIS)))
+
 (om::defmethod! M-AIS ((AIS list))
         :initvals '( '(0 1 3 2 7 10 8 4 11 5 9 6) )
 	:indoc '("AIS") 
@@ -80,11 +81,11 @@
 	:doc "Returns IM-AIS."
 (inversion (m-5 AIS)))
 
-(om::defmethod! RQ-AIS ((AIS list))
+(om::defmethod! QR-AIS ((AIS list))
         :initvals '( '(0 1 3 2 7 10 8 4 11 5 9 6) )
 	:indoc '("AIS") 
 	:icon 04
-	:doc "Returns RQ-AIS."
+	:doc "Returns QR-AIS."
 (retrograde (operation-q AIS)))
 
 (om::defmethod! 0-AIS ((AIS list))
@@ -143,10 +144,6 @@
 (defun m-5 (AIS)
 (mapcar #'(lambda (input1)
   (mod (om::om* 5 input1) 12)) AIS))
-
-(defun m-7 (AIS)
-(mapcar #'(lambda (input1)
-  (mod (om::om* 7 input1) 12)) AIS))
 
 (defun operation-0 (AIS)
 (om::subs-posn AIS (list (position 3 AIS) (position 9 AIS)) '(9 3)))
