@@ -1,4 +1,4 @@
-# my-lib
+# OM-AIS
 
 This is pre-release of the AIS (All Interval Series) library for Openmusic.  
 
