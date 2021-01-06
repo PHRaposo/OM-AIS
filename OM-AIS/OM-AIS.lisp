@@ -32,7 +32,7 @@
 
 (om::fill-library '( ("ALL" Nil Nil (NORMAL-AIS PRIME-AIS NORMAL-R-INVARIANT PRIME-R-INVARIANT NORMAL-QI-INVARIANT PRIME-QI-INVARIANT) Nil)
 
-                     ("OPERATIONS" Nil Nil (R-AIS I-AIS Q-AIS M-AIS IM-AIS RQ-AIS 0-AIS) Nil)
+                     ("OPERATIONS" Nil Nil (R-AIS RI-AIS I-AIS Q-AIS M-AIS IM-AIS QR-AIS 0-AIS) Nil)
 
                      ("CHORDS" Nil Nil (AIS->CHORD AIS->CHORDS) Nil)))
 
