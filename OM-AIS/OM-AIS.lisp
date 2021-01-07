@@ -26,7 +26,7 @@
 ;(import '(functions ...) :OM-AIS) TO USE FUNCTIONS BY TYPING ON THE KEYBOARD;;;; CONFILCTS???
 
 (in-package :OM-AIS)
-;(require-library :omcs)
+(require-library :omcs)
 
 (mapc 'om::compile&load (list (make-pathname  :directory (append (pathname-directory *load-pathname*) (list "sources")) :name "OM-AIS-functions" :type "lisp")))
 
