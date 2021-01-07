@@ -151,6 +151,8 @@
 
 ;;; METHOD FOR CALCULATIONS OF ALL AIS - REQUIRE OMCS ;;;
 
+#|
+
 (defun calculate-AIS ()
 (let* ((space (om::x-append 
               (list '(0)) 
@@ -163,16 +165,18 @@
 
        (second-rule ;no duplicate intervals
         (omcs::wildcard-rule 
-         (lambda () (cond ((<= (length (omcs::rev-partial-solution)) 2)) 
+         (lambda () (cond ((<= (length (omcs::rev-partial-solution)) 2) 
                            (om::last-elem ) 
-                           (first (omcs::rev-partial-solution))))
+                           (first (omcs::rev-partial-solution)))
                     (t (not (member
                             (mod (- (second (omcs::rev-partial-solution)) 
                             (first (omcs::rev-partial-solution))) 12)
                             (cdr (mapcar #'(lambda (input1)
-                            (mod input1 12)) (om::x->dx (omcs::rev-partial-solution))))))))))
+                            (mod input1 12)) (om::x->dx (omcs::rev-partial-solution))))))))))))
 
 (omcs::pmc-engine space (list first-rule second-rule) nil nil :all nil nil))) 
+
+|#
 
 (om::defmethod! normal-AIS ()
 	:icon 013
