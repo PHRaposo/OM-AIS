@@ -3,17 +3,17 @@
 ;;; AIS library for OM, Paulo Henrique Raposo
 ;;;   All Interval <Twelve Tone> Series
 ;;;
-;;; This library was created to deal with calculations and manipulations of AIS. 
-;;; There is 3856 possible normal form AIS, 1928 prime form AIS and some invariant AIS 
-;;; (R-invariants and QI invariants).The operations avaiable are:
-;;; -  retrogradation (R)
-;;; - inversion (I)
-;;; - retrograde inversion (RI) 
-;;; - operation Q (Q)
-;;; - multiplication (M)
-;;; - inversion multiplication (IM)
-;;; - retrograde Q (QR)
-;;; - operation 0 - (0)
+;;; This library was created to deal with calculations and manipulations of All-Interval Series.
+;;; There are 3856 possible normal form AIS, 1928 prime form AIS and some invariant AIS 
+;;; (R, QI and QRMI invariants).The operations avaiable are:
+;;;  -  retrogradation (R)
+;;;  - inversion (I)
+;;;  - retrograde inversion (RI) 
+;;;  - operation Q (Q)
+;;;  - multiplication (M)
+;;;  - inversion multiplication (IM)
+;;;  - retrograde Q (QR)
+;;;; - operation 0 - (0)
 ;;;
 ;;; References 
 ;;;
@@ -30,7 +30,7 @@
 ;;; it under the terms of the Lisp Lesser Gnu Public License.  See
 ;;; http://www.cliki.net/LLGPL for the text of this agreement.
 ;;;
-;;;
+;;;Updated:jan 12/2021 - Added normal and prime form QRMI invariants.
 ;;;
 ;;;
 ;;;
@@ -39,25 +39,31 @@
 
 (defvar *OM-AIS-path* (make-pathname  :directory (append (pathname-directory *load-pathname*) (list "AIS"))))
 
-(defpackage OM-AIS
-(:use "COMMON-LISP" "OpenMusic" "CL-USER"))
+(defpackage :OM-AIS
+(:nicknames "ALL-INTERVAL-SERIES")
+(:use "COMMON-LISP" "OM" "CL-USER"))
 
 ;(import '(functions ...) :OM-AIS) TO USE FUNCTIONS BY TYPING ON THE KEYBOARD;;;; CONFILCTS???
 
 (in-package :OM-AIS)
-(require-library :omcs)
+
+;(require-library :omcs)
 
 (mapc 'om::compile&load (list (make-pathname  :directory (append (pathname-directory *load-pathname*) (list "sources")) :name "OM-AIS-functions" :type "lisp")))
 
-(om::fill-library '( ("ALL" Nil Nil (NORMAL-AIS PRIME-AIS NORMAL-R-INVARIANT PRIME-R-INVARIANT NORMAL-QI-INVARIANT PRIME-QI-INVARIANT) Nil)
+(om::fill-library '( ("ALL" Nil Nil (NORMAL-AIS PRIME-AIS NORMAL-R-INVARIANT PRIME-R-INVARIANT NORMAL-QI-INVARIANT PRIME-QI-INVARIANT NORMAL-QRMI-INVARIANT PRIME-QRMI-INVARIANT) Nil)
 
                      ("OPERATIONS" Nil Nil (R-AIS RI-AIS I-AIS Q-AIS M-AIS IM-AIS QR-AIS 0-AIS) Nil)
 
-                     ("CHORDS" Nil Nil (AIS->CHORD AIS->CHORDS) Nil)))
+                     ("CHORDS" Nil Nil (AIS->CHORD AIS->CHORDS) Nil)
+
+                   ;  ("UTILS" Nil Nil (MOD12 T-0 INTERVALS-MOD12) Nil)
+
+))
 
 
 (print "
-OM-AIS (All Interval <Twelve-Tone> Series                                       
+OM-AIS (All-Interval <Twelve-Tone> Series                                       
    by Paulo Henrique Raposo - 2021
 Icons from the series Lyric Suite 
        by Robert Motherwell

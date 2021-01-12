@@ -1,5 +1,4 @@
-
-(in-package :OM-AIS)
+(in-package :om-ais)
 
 #|
 ;;; MODEL FOR OM::DEFMETHOD! DEFINITION ;;;
@@ -12,6 +11,8 @@
         :numouts number ;values construction
 	:doc "short documentation"
 |#
+
+;;; BASIC-FUNCTIONS ;;;
       
 (defun string-to-list (str) ; Solution by Banjocat - stackoverflow.com
         (if (not (streamp str))
@@ -38,6 +39,70 @@
 (defun subtraction (input-lists)
  (mapcar #'(lambda (input1)
    (om::om- input1 (first input1))) input-lists))
+
+(defun get-ais-chord (AIS low)
+ (om::dx->x low (om::om* 100 (mod12 (om::x->dx AIS)))))
+
+(defun operation-q (AIS)
+(let* ((rotations-AIS (mapcar #'(lambda (input1)
+                       (om::rotate AIS input1)) (om::arithm-ser 1 (- (length AIS) 1) 1)))
+        (transp-to-zero (list-mod-12 (subtraction rotations-AIS)))) 
+(flat (loop
+     for list in transp-to-zero
+     for y = (om::last-elem list)
+     when (= 6 y)
+     collect list))))
+
+(defun inversion (AIS)
+ (mapcar #' (lambda (input1)
+    (mod input1 12)) (om::om- 12 AIS)))
+
+(defun retrograde (AIS)  
+(let ((reverse-AIS (reverse AIS)))
+ (mapcar #' (lambda (input1)
+  (mod input1 12)) (om::om- reverse-AIS (first reverse-AIS)))))
+
+(defun m-5 (AIS)
+(mapcar #'(lambda (input1)
+  (mod (om::om* 5 input1) 12)) AIS))
+
+(defun operation-0 (AIS)
+(om::subs-posn AIS (list (position 3 AIS) (position 9 AIS)) '(9 3)))
+
+(defun intervals-mod12 (AIS)
+(mod12 (om::x->dx AIS)))
+
+(defun t-0 (AIS)
+   (mod12 (om::om- AIS (first AIS))))
+
+;;; METHOD FOR CALCULATIONS OF ALL AIS - REQUIRE OMCS ;;;
+#|
+
+(defun calculate-AIS ()
+(let* ((space (om::x-append 
+              (list '(0)) 
+              (om::repeat-n '(0 1 2 3 4 5 7 8 9 10 11) 10)
+              (list '(6))))
+       (first-rule ;no duplicate pcs
+        (omcs::wildcard-rule
+         (lambda (input1)
+          (not (member input1 (cdr (omcs::rev-partial-solution)))))))
+
+       (second-rule ;no duplicate intervals
+        (omcs::wildcard-rule 
+         (lambda () (cond ((<= (length (omcs::rev-partial-solution)) 2)) 
+                    (t (not (member
+                            (mod (- (second (omcs::rev-partial-solution)) 
+                            (first (omcs::rev-partial-solution))) 12)
+                            (cdr (mapcar #'(lambda (input1)
+                            (mod input1 12)) (om::x->dx (omcs::rev-partial-solution))))))))))))
+
+
+(omcs::pmc-engine space (list first-rule second-rule) nil nil :all nil nil))) 
+
+|#
+
+;;; OM-INTERFACE ;;;
 
 (om::defmethod! Q-AIS ((AIS list))
         :initvals '( '(0 1 3 2 7 10 8 4 11 5 9 6) )
@@ -95,9 +160,6 @@
 	:doc "Returns OPERATION-0-AIS (exchange 3 for 9)."
 (operation-0 AIS))
 
-(defun get-ais-chord (AIS low)
- (om::dx->x low (om::om* 100 (mod12 (om::x->dx AIS)))))
-
 (om::defmethod! AIS->CHORDS ((AIS-list list) (lowest-note number))
         :initvals '( '((0 1 3 2 7 10 8 4 11 5 9 6) (0 1 3 2 9 5 10 4 7 11 8 6)) '3600)
 	:indoc '("AIS-list" "midics") 
@@ -121,58 +183,6 @@
 	:icon 04
 	:doc "Returns a chord in midicents, transposed to the lowest note."
 (get-ais-chord AIS lowest-note))
-
-(defun operation-q (AIS)
-(let* ((rotations-AIS (mapcar #'(lambda (input1)
-                       (om::rotate AIS input1)) (om::arithm-ser 1 (- (length AIS) 1) 1)))
-        (transp-to-zero (list-mod-12 (subtraction rotations-AIS)))) 
-(flat (loop
-     for list in transp-to-zero
-     for y = (om::last-elem list)
-     when (= 6 y)
-     collect list))))
-
-(defun inversion (AIS)
- (mapcar #' (lambda (input1)
-    (mod input1 12)) (om::om- 12 AIS)))
-
-(defun retrograde (AIS)  
-(let ((reverse-AIS (reverse AIS)))
- (mapcar #' (lambda (input1)
-  (mod input1 12)) (om::om- reverse-AIS (first reverse-AIS)))))
-
-(defun m-5 (AIS)
-(mapcar #'(lambda (input1)
-  (mod (om::om* 5 input1) 12)) AIS))
-
-(defun operation-0 (AIS)
-(om::subs-posn AIS (list (position 3 AIS) (position 9 AIS)) '(9 3)))
-
-
-;;; METHOD FOR CALCULATIONS OF ALL AIS - REQUIRE OMCS ;;;
-
-
-(defun calculate-AIS ()
-(let* ((space (om::x-append 
-              (list '(0)) 
-              (om::repeat-n '(0 1 2 3 4 5 7 8 9 10 11) 10)
-              (list '(6))))
-       (first-rule ;no duplicate pcs
-        (omcs::wildcard-rule
-         (lambda (input1)
-          (not (member input1 (cdr (omcs::rev-partial-solution)))))))
-
-       (second-rule ;no duplicate intervals
-        (omcs::wildcard-rule 
-         (lambda () (cond ((<= (length (omcs::rev-partial-solution)) 2)) 
-                    (t (not (member
-                            (mod (- (second (omcs::rev-partial-solution)) 
-                            (first (omcs::rev-partial-solution))) 12)
-                            (cdr (mapcar #'(lambda (input1)
-                            (mod input1 12)) (om::x->dx (omcs::rev-partial-solution))))))))))))
-
-
-(omcs::pmc-engine space (list first-rule second-rule) nil nil :all nil nil))) 
 
 (om::defmethod! normal-AIS ()
 	:icon 013
@@ -203,5 +213,34 @@
 	:icon 013
 	:doc "Returns all prime form QI invariant AIS."
 (read-text-file "prime-QI-invariant"))
+
+(om::defmethod! normal-QRMI-invariant ()
+	:icon 013
+	:doc "Returns all normal form QRMI invariant AIS."
+(read-text-file "normal-QRMI-invariant"))
+
+(om::defmethod! prime-QRMI-invariant ()
+	:icon 013
+	:doc "Returns all prime form QRMI invariant AIS."
+(read-text-file "prime-QRMI-invariant"))
+
+#|
+;;;mod12 for atom, lists and list of lists;;;
+
+(om::defmethod! mod12 ((input1 type) (input2 type) (... ...))
+        :initvals '( 'input1-initvals 'input2-initvals '...)
+	:indoc '("description-input1" "description-input2" "...") 
+	:icon number for icon
+	:doc "short documentation"
+
+;;; transposition to zero ;;;
+
+(om::defmethod! t-0 ((input1 type) (input2 type) (... ...))
+        :initvals '( 'input1-initvals 'input2-initvals '...)
+	:indoc '("description-input1" "description-input2" "...") 
+	:icon number for icon
+	:doc "short documentation"
+|#
+
 
 
