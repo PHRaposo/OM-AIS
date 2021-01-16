@@ -30,7 +30,8 @@ The Composition of Elliott Carter's Night Fantasies, by John F. Link
 
 Harmony Book, by Elliott Carter
 
+First OM version: jan 7/2021 - Thanks to Fabio De Sanctis De Benedictis and to Karin Haddad for testing the library.
 Updated:jan 12/2021 - Added normal and prime form QRMI invariants.
-Thanks to Fabio De Sanctis De Benedictis and to Karin Haddad
-for testing the library.
+        jan 13/2021 - Compatible version with OM-sharp. Thanks to Jerome for testing and Jean Bresson for helping with the code.
+		jan 16/2021 - New tutorial patch and new functions (UTILS).
 
