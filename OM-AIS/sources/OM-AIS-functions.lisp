@@ -161,9 +161,9 @@
 (operation-0 AIS))
 
 (om::defmethod! AIS->CHORDS ((AIS-list list) (lowest-note number))
-        :initvals '( '((0 1 3 2 7 10 8 4 11 5 9 6) (0 1 3 2 9 5 10 4 7 11 8 6)) '3600)
+        :initvals '( '((0 1 3 2 7 10 8 4 11 5 9 6) (0 1 3 2 9 5 10 4 7 11 8 6)) 3600)
 	:indoc '("AIS-list" "midics") 
-	:icon 04
+	:icon 06
 	:doc "Returns a list of chords in midicents, transposed to the lowest note <midicents>."
 (mapcar #'(lambda (input1)
  (get-ais-chord input1 lowest-note)) AIS-list))
@@ -171,16 +171,16 @@
 (om::defmethod! AIS->CHORDS ((AIS-list list) (lowest-notes list))
         :initvals '( '((0 1 3 2 7 10 8 4 11 5 9 6) (0 1 3 2 9 5 10 4 7 11 8 6)) '(3600 3400))
 	:indoc '("AIS-list" "midics-list") 
-	:icon 04
+	:icon 06
 	:doc "Returns a list of chords in midicents, transposed to the lowest note <midicents>."
 (mapcar #'(lambda (input1 input2)
  (get-ais-chord input1 input2)) AIS-list lowest-notes))
 
 
 (om::defmethod! AIS->CHORD ((AIS list) (lowest-note number))
-        :initvals '( '(0 1 3 2 7 10 8 4 11 5 9 6) '3600)
+        :initvals '( '(0 1 3 2 7 10 8 4 11 5 9 6) 3600)
 	:indoc '("AIS" "midics") 
-	:icon 04
+	:icon 06
 	:doc "Returns a chord in midicents, transposed to the lowest note."
 (get-ais-chord AIS lowest-note))
 
@@ -224,23 +224,46 @@
 	:doc "Returns all prime form QRMI invariant AIS."
 (read-text-file "prime-QRMI-invariant"))
 
-#|
-;;;mod12 for atom, lists and list of lists;;;
+;;; UTILS ;;; 
 
-(om::defmethod! mod12 ((input1 type) (input2 type) (... ...))
-        :initvals '( 'input1-initvals 'input2-initvals '...)
-	:indoc '("description-input1" "description-input2" "...") 
-	:icon number for icon
-	:doc "short documentation"
+(om::defmethod! mc->pc ((midicents list))
+        :initvals '((6500 6400 7200 6900 7900 7400 8000 7300 7500 6600 7000 5900))
+	:indoc '("List midicents") 
+	:icon 05
+	:doc "Midicents to pitch classes."
+(mod12 (om::om/ midicents 100)))
 
-;;; transposition to zero ;;;
+(om::defmethod! int-mod12 ((AIS list))
+        :initvals '((5 4 0 9 7 2 8 1 3 6 10 11))
+	:indoc '("List of numbers") 
+	:icon 05
+	:doc "Calculates the intervals mod12 of an AIS."
+(intervals-mod12 AIS))
 
-(om::defmethod! t-0 ((input1 type) (input2 type) (... ...))
-        :initvals '( 'input1-initvals 'input2-initvals '...)
-	:indoc '("description-input1" "description-input2" "...") 
-	:icon number for icon
-	:doc "short documentation"
-|#
+(om::defmethod! mod-12 ((numbers list))
+        :initvals '((-1 -4 9 -2 -5 6 -7 2 3 4 1))
+	:indoc '("List of numbers") 
+	:icon 05
+	:doc "Calculates the modulo 12 of a list of numbers."
+(mod12 numbers))
 
+(om::defmethod! AIS->normal ((AIS list))
+        :initvals '((0 1 3 2 7 10 8 4 11 5 9 6))
+	:indoc '("AIS - list of pitch-classes") 
+	:icon 05
+	:doc "Transposes an AIS to its normal form."
+(t-0 AIS))
+
+(om::defmethod! AIS->prime ((AIS list))
+        :initvals '((0 1 3 2 7 10 8 4 11 5 9 6))
+	:indoc '("AIS - list of pitch-classes") 
+	:icon 05
+	:doc "Calculates the prime form of an AIS."
+(let* ((normal-form (t-0 AIS))
+       (first-interval (- (second normal-form) (first normal-form))))
+   (cond ((< first-interval (- 12 first-interval))
+          (write normal-form))
+   (t (write (inversion normal-form))))))
+     
 
 

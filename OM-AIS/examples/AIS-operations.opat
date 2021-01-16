@@ -1,0 +1,1372 @@
+
+(:patch
+ (:name "AIS-operations")
+ (:doc "")
+ (:info
+  (:created "2021/01/13 11:24:25")
+  (:modified "2021/01/13 11:24:54")
+  (:by "om-sharp")
+  (:version 1.0200009))
+ (:window (:size (1246 686)) (:position (95 52)))
+ (:grid nil)
+ (:lock nil)
+ (:boxes
+  (:box
+   (:type :function)
+   (:reference length)
+   (:group-id nil)
+   (:name "length")
+   (:x 809)
+   (:y 100)
+   (:w 72)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SEQUENCE")
+     (:value nil)
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 0))
+  (:box
+   (:type :function)
+   (:reference length)
+   (:group-id nil)
+   (:name "length")
+   (:x 950)
+   (:y 100)
+   (:w 72)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SEQUENCE")
+     (:value nil)
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 1))
+  (:box
+   (:library "OM-AIS")
+   (:type :function)
+   (:reference (:symbol "PRIME-QRMI-INVARIANT" "OM-AIS"))
+   (:group-id nil)
+   (:name "prime-qrmi-invariant")
+   (:x 912)
+   (:y 0)
+   (:w 153)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs)
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 2))
+  (:box
+   (:library "OM-AIS")
+   (:type :function)
+   (:reference (:symbol "NORMAL-QRMI-INVARIANT" "OM-AIS"))
+   (:group-id nil)
+   (:name "normal-qrmi-invariant")
+   (:x 768)
+   (:y 0)
+   (:w 160)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs)
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 3))
+  (:box
+   (:library "OM-AIS")
+   (:type :function)
+   (:reference (:symbol "QR-AIS" "OM-AIS"))
+   (:group-id nil)
+   (:name "qr-ais")
+   (:x 673)
+   (:y 193)
+   (:w 71)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "AIS")
+     (:value (:list 0 1 3 2 7 10 8 4 11 5 9 6))
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 4))
+  (:box
+   (:type :abstraction)
+   (:reference
+    (:patch
+     (:name "random-transposition")
+     (:doc "")
+     (:info
+      (:created nil)
+      (:modified nil)
+      (:by *app-name*)
+      (:version 0))
+     (:window (:size (500 500)) (:position (189 230)))
+     (:grid nil)
+     (:lock nil)
+     (:boxes
+      (:box
+       (:type :special)
+       (:reference repeat-n)
+       (:group-id nil)
+       (:name "repeat-n")
+       (:x 130)
+       (:y 264)
+       (:w 91)
+       (:h 28)
+       (:color
+        (:color-or-nil
+         (:color (:color 0.82 0.85 0.7 1.0))
+         (:t-or-nil t)))
+       (:border nil)
+       (:roundness nil)
+       (:text-font nil)
+       (:align :center)
+       (:icon :left)
+       (:lock nil)
+       (:inputs
+        (:input
+         (:type :standard)
+         (:name "self")
+         (:value nil)
+         (:reactive nil))
+        (:input
+         (:type :standard)
+         (:name "num")
+         (:value 0)
+         (:reactive nil))
+        (:input
+         (:type :optional)
+         (:name "scope")
+         (:value :global)
+         (:reactive nil)))
+       (:outputs (:output (:name "collected results") (:reactive nil)))
+       (:id 0))
+      (:box
+       (:type :function)
+       (:reference length)
+       (:group-id nil)
+       (:name "length")
+       (:x 197)
+       (:y 88)
+       (:w 72)
+       (:h 29)
+       (:color nil)
+       (:border nil)
+       (:roundness nil)
+       (:text-font nil)
+       (:align nil)
+       (:icon :left)
+       (:lock nil)
+       (:lambda nil)
+       (:inputs
+        (:input
+         (:type :standard)
+         (:name "SEQUENCE")
+         (:value nil)
+         (:reactive nil)))
+       (:outputs (:output (:name "out") (:reactive nil)))
+       (:id 1))
+      (:box
+       (:type :value)
+       (:reference fixnum)
+       (:group-id nil)
+       (:name "aux 5")
+       (:x 33)
+       (:y 169)
+       (:w 48)
+       (:h 30)
+       (:color
+        (:color-or-nil
+         (:color (:color 1.0 1.0 1.0 1.0))
+         (:t-or-nil t)))
+       (:border nil)
+       (:roundness nil)
+       (:text-font nil)
+       (:align nil)
+       (:lock nil)
+       (:inputs)
+       (:outputs (:output (:name "value") (:reactive nil)))
+       (:value 2100)
+       (:id 2))
+      (:box
+       (:type :function)
+       (:reference om+)
+       (:group-id nil)
+       (:name "om+")
+       (:x 82)
+       (:y 211)
+       (:w 64)
+       (:h 29)
+       (:color nil)
+       (:border nil)
+       (:roundness nil)
+       (:text-font nil)
+       (:align nil)
+       (:icon :left)
+       (:lock nil)
+       (:lambda nil)
+       (:inputs
+        (:input
+         (:type :standard)
+         (:name "ARG1")
+         (:value 0)
+         (:reactive nil))
+        (:input
+         (:type :standard)
+         (:name "ARG2")
+         (:value 0)
+         (:reactive nil)))
+       (:outputs (:output (:name "out") (:reactive nil)))
+       (:id 3))
+      (:box
+       (:type :value)
+       (:reference fixnum)
+       (:group-id nil)
+       (:name "aux 4")
+       (:x 55)
+       (:y 119)
+       (:w 41)
+       (:h 30)
+       (:color
+        (:color-or-nil
+         (:color (:color 1.0 1.0 1.0 1.0))
+         (:t-or-nil t)))
+       (:border nil)
+       (:roundness nil)
+       (:text-font nil)
+       (:align nil)
+       (:lock nil)
+       (:inputs)
+       (:outputs (:output (:name "value") (:reactive nil)))
+       (:value 100)
+       (:id 4))
+      (:box
+       (:type :function)
+       (:reference om*)
+       (:group-id nil)
+       (:name "om*")
+       (:x 99)
+       (:y 155)
+       (:w 60)
+       (:h 29)
+       (:color nil)
+       (:border nil)
+       (:roundness nil)
+       (:text-font nil)
+       (:align nil)
+       (:icon :left)
+       (:lock nil)
+       (:lambda nil)
+       (:inputs
+        (:input
+         (:type :standard)
+         (:name "ARG1")
+         (:value 0)
+         (:reactive nil))
+        (:input
+         (:type :standard)
+         (:name "ARG2")
+         (:value 0)
+         (:reactive nil)))
+       (:outputs (:output (:name "out") (:reactive nil)))
+       (:id 5))
+      (:box
+       (:type :value)
+       (:reference fixnum)
+       (:group-id nil)
+       (:name "aux 3")
+       (:x 132)
+       (:y 34)
+       (:w 34)
+       (:h 30)
+       (:color
+        (:color-or-nil
+         (:color (:color 1.0 1.0 1.0 1.0))
+         (:t-or-nil t)))
+       (:border nil)
+       (:roundness nil)
+       (:text-font nil)
+       (:align nil)
+       (:lock nil)
+       (:inputs)
+       (:outputs (:output (:name "value") (:reactive nil)))
+       (:value 15)
+       (:id 6))
+      (:box
+       (:type :value)
+       (:reference fixnum)
+       (:group-id nil)
+       (:name "aux 2")
+       (:x 77)
+       (:y 34)
+       (:w 32)
+       (:h 30)
+       (:color
+        (:color-or-nil
+         (:color (:color 1.0 1.0 1.0 1.0))
+         (:t-or-nil t)))
+       (:border nil)
+       (:roundness nil)
+       (:text-font nil)
+       (:align nil)
+       (:lock nil)
+       (:inputs)
+       (:outputs (:output (:name "value") (:reactive nil)))
+       (:value 0)
+       (:id 7))
+      (:box
+       (:type :function)
+       (:reference om-random)
+       (:group-id nil)
+       (:name "om-random")
+       (:x 88)
+       (:y 64)
+       (:w 103)
+       (:h 29)
+       (:color nil)
+       (:border nil)
+       (:roundness nil)
+       (:text-font nil)
+       (:align nil)
+       (:icon :left)
+       (:lock nil)
+       (:lambda nil)
+       (:inputs
+        (:input
+         (:type :standard)
+         (:name "LOW")
+         (:value 0)
+         (:reactive nil))
+        (:input
+         (:type :standard)
+         (:name "HIGH")
+         (:value 1)
+         (:reactive nil)))
+       (:outputs (:output (:name "out") (:reactive nil)))
+       (:id 8))
+      (:box
+       (:type :io)
+       (:reference
+        (:in (:type omin) (:index 1) (:name "AIS-list") (:doc "")))
+       (:group-id nil)
+       (:name "AIS-list")
+       (:x 197)
+       (:y 8)
+       (:w 61)
+       (:h 42)
+       (:color
+        (:color-or-nil
+         (:color (:color 1.0 1.0 1.0 0.0))
+         (:t-or-nil t)))
+       (:border 0)
+       (:roundness 0)
+       (:text-font nil)
+       (:align :center)
+       (:icon :top)
+       (:inputs)
+       (:outputs (:output (:name "out") (:reactive nil)))
+       (:id 9))
+      (:box
+       (:type :io)
+       (:reference
+        (:out (:type omout) (:name "output") (:index 1) (:doc nil)))
+       (:group-id nil)
+       (:name "output")
+       (:x 134)
+       (:y 353)
+       (:w 58)
+       (:h 42)
+       (:color
+        (:color-or-nil
+         (:color (:color 1.0 1.0 1.0 0.0))
+         (:t-or-nil t)))
+       (:border 0)
+       (:roundness 0)
+       (:text-font nil)
+       (:align :center)
+       (:icon :top)
+       (:inputs
+        (:input
+         (:type :standard)
+         (:name "out-value")
+         (:value nil)
+         (:reactive nil)))
+       (:outputs)
+       (:id 10)))
+     (:connections
+      (:connection (:from (:box 0 :out 0)) (:to (:box 10 :in 0)))
+      (:connection (:from (:box 1 :out 0)) (:to (:box 0 :in 1)))
+      (:connection (:from (:box 2 :out 0)) (:to (:box 3 :in 0)))
+      (:connection (:from (:box 3 :out 0)) (:to (:box 0 :in 0)))
+      (:connection (:from (:box 4 :out 0)) (:to (:box 5 :in 0)))
+      (:connection (:from (:box 5 :out 0)) (:to (:box 3 :in 1)))
+      (:connection (:from (:box 6 :out 0)) (:to (:box 8 :in 1)))
+      (:connection (:from (:box 7 :out 0)) (:to (:box 8 :in 0)))
+      (:connection (:from (:box 8 :out 0)) (:to (:box 5 :in 1)))
+      (:connection (:from (:box 9 :out 0)) (:to (:box 1 :in 0))))))
+   (:group-id nil)
+   (:name "random-transposition")
+   (:x 566)
+   (:y 2822/7)
+   (:w 156)
+   (:h 48)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align :center)
+   (:display :hidden)
+   (:lock nil)
+   (:lambda nil)
+   (:pre-delay 0)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "AIS-list")
+     (:value nil)
+     (:reactive nil)))
+   (:outputs (:output (:name "output") (:reactive nil)))
+   (:id 5))
+  (:box
+   (:type :value)
+   (:reference fixnum)
+   (:group-id nil)
+   (:name "aux")
+   (:x 108)
+   (:y 199)
+   (:w 48)
+   (:h 30)
+   (:color
+    (:color-or-nil (:color (:color 1.0 1.0 1.0 1.0)) (:t-or-nil t)))
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:lock nil)
+   (:inputs)
+   (:outputs (:output (:name "value") (:reactive nil)))
+   (:value 3600)
+   (:id 6))
+  (:box
+   (:library "OM-AIS")
+   (:type :function)
+   (:reference (:symbol "AIS->CHORDS" "OM-AIS"))
+   (:group-id nil)
+   (:name "ais->chords")
+   (:x 430)
+   (:y 461)
+   (:w 104)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "AIS-LIST")
+     (:value
+      (:list
+       (:list 0 1 3 2 7 10 8 4 11 5 9 6)
+       (:list 0 1 3 2 9 5 10 4 7 11 8 6)))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LOWEST-NOTES")
+     (:value 3600)
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 7))
+  (:box
+   (:type :object)
+   (:reference chord)
+   (:group-id nil)
+   (:name "CHORD")
+   (:x 41)
+   (:y 322)
+   (:w 124)
+   (:h 177)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align :center)
+   (:display :mini-view)
+   (:showname nil)
+   (:show-markers t)
+   (:lock :locked)
+   (:lambda nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SELF")
+     (:value nil)
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LMIDIC")
+     (:value (:list 6000))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LVEL")
+     (:value (:list 100))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LOFFSET")
+     (:value (:list 0))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LDUR")
+     (:value (:list 1000))
+     (:reactive nil))
+    (:input
+     (:type :key)
+     (:name "lchan")
+     (:value (:list 1))
+     (:reactive nil)))
+   (:outputs
+    (:output (:name "SELF") (:reactive nil))
+    (:output (:name "LMIDIC") (:reactive nil))
+    (:output (:name "LVEL") (:reactive nil))
+    (:output (:name "LOFFSET") (:reactive nil))
+    (:output (:name "LDUR") (:reactive nil))
+    (:output (:name "lchan") (:reactive nil)))
+   (:window (:size nil) (:position nil))
+   (:edition-params (:staff :ggff))
+   (:value
+    (:object
+     (:class chord)
+     (:slots
+      ((:symbolic-date nil)
+       (:symbolic-dur nil)
+       (:symbolic-dur-extent 0)
+       (:extras nil)
+       (:onset 0)
+       (:item-time nil)
+       (:item-internal-time nil)
+       (:item-type nil)
+       (:attributes nil)
+       (:lmidic
+        (:list
+         3600
+         3700
+         3900
+         5000
+         5500
+         5800
+         6800
+         7600
+         8300
+         8900
+         9300
+         10200))
+       (:lvel (:list 100 100 100 100 100 100 100 100 100 100 100 100))
+       (:loffset (:list 0 0 0 0 0 0 0 0 0 0 0 0))
+       (:ldur
+        (:list
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000))
+       (:lchan (:list 1 1 1 1 1 1 1 1 1 1 1 1))
+       (:lport
+        (:list nil nil nil nil nil nil nil nil nil nil nil nil))))))
+   (:id 8))
+  (:box
+   (:library "OM-AIS")
+   (:type :function)
+   (:reference (:symbol "AIS->CHORD" "OM-AIS"))
+   (:group-id nil)
+   (:name "ais->chord")
+   (:x 45)
+   (:y 231)
+   (:w 99)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "AIS")
+     (:value (:list 0 1 3 2 7 10 8 4 11 5 9 6))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LOWEST-NOTE")
+     (:value 3600)
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 9))
+  (:box
+   (:type :function)
+   (:reference length)
+   (:group-id nil)
+   (:name "length")
+   (:x 670)
+   (:y 94)
+   (:w 72)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SEQUENCE")
+     (:value nil)
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 10))
+  (:box
+   (:type :function)
+   (:reference length)
+   (:group-id nil)
+   (:name "length")
+   (:x 544)
+   (:y 90)
+   (:w 72)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SEQUENCE")
+     (:value nil)
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 11))
+  (:box
+   (:type :function)
+   (:reference length)
+   (:group-id nil)
+   (:name "length")
+   (:x 431)
+   (:y 85)
+   (:w 72)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SEQUENCE")
+     (:value nil)
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 12))
+  (:box
+   (:type :function)
+   (:reference length)
+   (:group-id nil)
+   (:name "length")
+   (:x 314)
+   (:y 97)
+   (:w 72)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SEQUENCE")
+     (:value nil)
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 13))
+  (:box
+   (:type :function)
+   (:reference length)
+   (:group-id nil)
+   (:name "length")
+   (:x 141)
+   (:y 98)
+   (:w 72)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SEQUENCE")
+     (:value nil)
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 14))
+  (:box
+   (:type :function)
+   (:reference length)
+   (:group-id nil)
+   (:name "length")
+   (:x 70)
+   (:y 100)
+   (:w 72)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SEQUENCE")
+     (:value nil)
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 15))
+  (:box
+   (:type :object)
+   (:reference chord-seq)
+   (:group-id nil)
+   (:name "CHORD-SEQ")
+   (:x 367)
+   (:y 526)
+   (:w 404)
+   (:h 177)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align :center)
+   (:display :mini-view)
+   (:showname nil)
+   (:show-markers t)
+   (:lock :locked)
+   (:lambda nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "SELF")
+     (:value nil)
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LMIDIC")
+     (:value (:list 6000))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LONSET")
+     (:value (:list 0 1000))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LDUR")
+     (:value (:list 1000))
+     (:reactive nil))
+    (:input
+     (:type :standard)
+     (:name "LVEL")
+     (:value (:list 100))
+     (:reactive nil))
+    (:input
+     (:type :key)
+     (:name "loffset")
+     (:value (:list 0))
+     (:reactive nil))
+    (:input
+     (:type :key)
+     (:name "lchan")
+     (:value (:list 1))
+     (:reactive nil))
+    (:input (:type :key) (:name "llegato") (:value 0) (:reactive nil)))
+   (:outputs
+    (:output (:name "SELF") (:reactive nil))
+    (:output (:name "LMIDIC") (:reactive nil))
+    (:output (:name "LONSET") (:reactive nil))
+    (:output (:name "LDUR") (:reactive nil))
+    (:output (:name "LVEL") (:reactive nil))
+    (:output (:name "loffset") (:reactive nil))
+    (:output (:name "lchan") (:reactive nil))
+    (:output (:name "llegato") (:reactive nil)))
+   (:window (:size nil) (:position nil))
+   (:edition-params (:staff :ggff))
+   (:value
+    (:object
+     (:class chord-seq)
+     (:slots
+      ((:onset 0)
+       (:duration 7000)
+       (:interpol (:number-or-nil (:number 50) (:t-or-nil nil)))
+       (:name "CHORD-SEQ")
+       (:symbolic-date nil)
+       (:symbolic-dur nil)
+       (:symbolic-dur-extent 0)
+       (:extras nil)
+       (:lmidic
+        (:list
+         (:list
+          3300
+          3600
+          4400
+          5000
+          5500
+          5900
+          6100
+          7000
+          7700
+          7800
+          8800
+          9900)
+         (:list
+          2900
+          4000
+          5000
+          5100
+          5800
+          6700
+          6900
+          7300
+          7800
+          8400
+          9200
+          9500)
+         (:list
+          2900
+          3300
+          4200
+          4800
+          4900
+          5100
+          6200
+          6700
+          7000
+          8000
+          8800
+          9500)
+         (:list
+          2500
+          3000
+          4000
+          4700
+          4800
+          5100
+          5300
+          5700
+          6800
+          7400
+          8200
+          9100)
+         (:list
+          2300
+          3000
+          3200
+          3700
+          4800
+          5700
+          6700
+          7500
+          7600
+          8200
+          8600
+          8900)
+         (:list
+          3500
+          4000
+          4400
+          4600
+          5500
+          6200
+          6300
+          7300
+          8400
+          9000
+          9300
+          10100)
+         (:list
+          2200
+          2300
+          3100
+          3600
+          4100
+          4400
+          5400
+          6200
+          6900
+          7500
+          8500
+          8800)))
+       (:lonset (:list 0 1000 2000 3000 4000 5000 6000 7000))
+       (:ldur
+        (:list
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000
+         1000))
+       (:lvel (:list 100 100 100 100 100 100 100 100 100 100 100 100))
+       (:loffset (:list 0 0 0 0 0 0 0 0 0 0 0 0))
+       (:lchan (:list 1 1 1 1 1 1 1 1 1 1 1 1))
+       (:lport (:list nil nil nil nil nil nil nil nil nil nil nil nil))
+       (:llegato nil)))))
+   (:id 16))
+  (:box
+   (:type :function)
+   (:reference list)
+   (:group-id nil)
+   (:name "list")
+   (:x 503)
+   (:y 367)
+   (:w 80)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs
+    (:input (:type :optional) (:name "x") (:value nil) (:reactive nil))
+    (:input (:type :optional) (:name "x") (:value nil) (:reactive nil))
+    (:input (:type :optional) (:name "x") (:value nil) (:reactive nil))
+    (:input (:type :optional) (:name "x") (:value nil) (:reactive nil))
+    (:input (:type :optional) (:name "x") (:value nil) (:reactive nil))
+    (:input (:type :optional) (:name "x") (:value nil) (:reactive nil))
+    (:input
+     (:type :optional)
+     (:name "x")
+     (:value nil)
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 17))
+  (:box
+   (:type :function)
+   (:reference first)
+   (:group-id nil)
+   (:name "first")
+   (:x 248)
+   (:y 112)
+   (:w 59)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "LIST")
+     (:value nil)
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 18))
+  (:box
+   (:library "OM-AIS")
+   (:type :function)
+   (:reference (:symbol "0-AIS" "OM-AIS"))
+   (:group-id nil)
+   (:name "0-ais")
+   (:x 749)
+   (:y 193)
+   (:w 66)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "AIS")
+     (:value (:list 0 1 3 2 7 10 8 4 11 5 9 6))
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 19))
+  (:box
+   (:library "OM-AIS")
+   (:type :function)
+   (:reference (:symbol "IM-AIS" "OM-AIS"))
+   (:group-id nil)
+   (:name "im-ais")
+   (:x 597)
+   (:y 193)
+   (:w 73)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "AIS")
+     (:value (:list 0 1 3 2 7 10 8 4 11 5 9 6))
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 20))
+  (:box
+   (:library "OM-AIS")
+   (:type :function)
+   (:reference (:symbol "M-AIS" "OM-AIS"))
+   (:group-id nil)
+   (:name "m-ais")
+   (:x 521)
+   (:y 192)
+   (:w 69)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "AIS")
+     (:value (:list 0 1 3 2 7 10 8 4 11 5 9 6))
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 21))
+  (:box
+   (:library "OM-AIS")
+   (:type :function)
+   (:reference (:symbol "Q-AIS" "OM-AIS"))
+   (:group-id nil)
+   (:name "q-ais")
+   (:x 429)
+   (:y 193)
+   (:w 66)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "AIS")
+     (:value (:list 0 1 3 2 7 10 8 4 11 5 9 6))
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 22))
+  (:box
+   (:library "OM-AIS")
+   (:type :function)
+   (:reference (:symbol "I-AIS" "OM-AIS"))
+   (:group-id nil)
+   (:name "i-ais")
+   (:x 344)
+   (:y 193)
+   (:w 62)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "AIS")
+     (:value (:list 0 1 3 2 7 10 8 4 11 5 9 6))
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 23))
+  (:box
+   (:library "OM-AIS")
+   (:type :function)
+   (:reference (:symbol "R-AIS" "OM-AIS"))
+   (:group-id nil)
+   (:name "r-ais")
+   (:x 261)
+   (:y 193)
+   (:w 64)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs
+    (:input
+     (:type :standard)
+     (:name "AIS")
+     (:value (:list 0 1 3 2 7 10 8 4 11 5 9 6))
+     (:reactive nil)))
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 24))
+  (:box
+   (:library "OM-AIS")
+   (:type :function)
+   (:reference (:symbol "PRIME-QI-INVARIANT" "OM-AIS"))
+   (:group-id nil)
+   (:name "prime-qi-invariant")
+   (:x 640)
+   (:y 0)
+   (:w 138)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs)
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 25))
+  (:box
+   (:library "OM-AIS")
+   (:type :function)
+   (:reference (:symbol "NORMAL-QI-INVARIANT" "OM-AIS"))
+   (:group-id nil)
+   (:name "normal-qi-invariant")
+   (:x 510)
+   (:y 1)
+   (:w 145)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs)
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 26))
+  (:box
+   (:library "OM-AIS")
+   (:type :function)
+   (:reference (:symbol "PRIME-R-INVARIANT" "OM-AIS"))
+   (:group-id nil)
+   (:name "prime-r-invariant")
+   (:x 403)
+   (:y 1)
+   (:w 133)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs)
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 27))
+  (:box
+   (:library "OM-AIS")
+   (:type :function)
+   (:reference (:symbol "NORMAL-R-INVARIANT" "OM-AIS"))
+   (:group-id nil)
+   (:name "normal-r-invariant")
+   (:x 283)
+   (:y 1)
+   (:w 139)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs)
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 28))
+  (:box
+   (:library "OM-AIS")
+   (:type :function)
+   (:reference (:symbol "PRIME-AIS" "OM-AIS"))
+   (:group-id nil)
+   (:name "prime-ais")
+   (:x 160)
+   (:y 0)
+   (:w 90)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs)
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 29))
+  (:box
+   (:library "OM-AIS")
+   (:type :function)
+   (:reference (:symbol "NORMAL-AIS" "OM-AIS"))
+   (:group-id nil)
+   (:name "normal-ais")
+   (:x 60)
+   (:y 0)
+   (:w 97)
+   (:h 29)
+   (:color nil)
+   (:border nil)
+   (:roundness nil)
+   (:text-font nil)
+   (:align nil)
+   (:icon :left)
+   (:lock nil)
+   (:lambda nil)
+   (:inputs)
+   (:outputs (:output (:name "out") (:reactive nil)))
+   (:id 30)))
+ (:connections
+  (:connection (:from (:box 2 :out 0)) (:to (:box 1 :in 0)))
+  (:connection (:from (:box 3 :out 0)) (:to (:box 0 :in 0)))
+  (:connection (:from (:box 4 :out 0)) (:to (:box 17 :in 5)))
+  (:connection (:from (:box 5 :out 0)) (:to (:box 7 :in 1)))
+  (:connection (:from (:box 6 :out 0)) (:to (:box 9 :in 1)))
+  (:connection (:from (:box 7 :out 0)) (:to (:box 16 :in 1)))
+  (:connection (:from (:box 9 :out 0)) (:to (:box 8 :in 1)))
+  (:connection (:from (:box 17 :out 0)) (:to (:box 5 :in 0)))
+  (:connection (:from (:box 17 :out 0)) (:to (:box 7 :in 0)))
+  (:connection (:from (:box 18 :out 0)) (:to (:box 4 :in 0)))
+  (:connection (:from (:box 18 :out 0)) (:to (:box 9 :in 0)))
+  (:connection (:from (:box 18 :out 0)) (:to (:box 19 :in 0)))
+  (:connection (:from (:box 18 :out 0)) (:to (:box 20 :in 0)))
+  (:connection (:from (:box 18 :out 0)) (:to (:box 21 :in 0)))
+  (:connection (:from (:box 18 :out 0)) (:to (:box 22 :in 0)))
+  (:connection (:from (:box 18 :out 0)) (:to (:box 23 :in 0)))
+  (:connection (:from (:box 18 :out 0)) (:to (:box 24 :in 0)))
+  (:connection (:from (:box 19 :out 0)) (:to (:box 17 :in 6)))
+  (:connection (:from (:box 20 :out 0)) (:to (:box 17 :in 4)))
+  (:connection (:from (:box 21 :out 0)) (:to (:box 17 :in 3)))
+  (:connection (:from (:box 22 :out 0)) (:to (:box 17 :in 2)))
+  (:connection (:from (:box 23 :out 0)) (:to (:box 17 :in 1)))
+  (:connection (:from (:box 24 :out 0)) (:to (:box 17 :in 0)))
+  (:connection (:from (:box 25 :out 0)) (:to (:box 10 :in 0)))
+  (:connection (:from (:box 26 :out 0)) (:to (:box 11 :in 0)))
+  (:connection (:from (:box 27 :out 0)) (:to (:box 12 :in 0)))
+  (:connection (:from (:box 28 :out 0)) (:to (:box 13 :in 0)))
+  (:connection (:from (:box 29 :out 0)) (:to (:box 14 :in 0)))
+  (:connection (:from (:box 29 :out 0)) (:to (:box 18 :in 0)))
+  (:connection (:from (:box 30 :out 0)) (:to (:box 15 :in 0)))))

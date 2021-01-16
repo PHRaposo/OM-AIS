@@ -30,37 +30,48 @@
 ;;; it under the terms of the Lisp Lesser Gnu Public License.  See
 ;;; http://www.cliki.net/LLGPL for the text of this agreement.
 ;;;
-;;;Updated:jan 12/2021 - Added normal and prime form QRMI invariants.
-;;;
-;;;
+;;; First OM version: jan 7/2021 - Thanks to Fabio De Sanctis De Benedictis and to Karin Haddad for testing the library.
+;;; Updated:jan 12/2021 - Added normal and prime form QRMI invariants.
+;;;        jan 13/2021 - Compatible version with OM-sharp. Thanks to Jerome for testing this version and Jean Bresson for helping with the code.
+;;;        jan 16/2021 - New tutorial patch and new functions (UTILS).
 ;;;
 
 (in-package :om)
 
-(defvar *OM-AIS-path* (make-pathname  :directory (append (pathname-directory *load-pathname*) (list "AIS"))))
+(defvar *OM-AIS-path* (make-pathname  :directory (append (pathname-directory *load-pathname*) (list "sources") (list "AIS"))))
 
-(defpackage :OM-AIS
-(:nicknames "ALL-INTERVAL-SERIES")
-(:use "COMMON-LISP" "OM" "CL-USER"))
+(mapc 'compile&load (list
+                         (make-pathname  :directory (append (pathname-directory *load-pathname*) (list "sources")) :name "package" :type "lisp")
+                         (make-pathname  :directory (append (pathname-directory *load-pathname*) (list "sources")) :name "OM-AIS-functions" :type "lisp")))
 
-;(import '(functions ...) :OM-AIS) TO USE FUNCTIONS BY TYPING ON THE KEYBOARD;;;; CONFILCTS???
+(fill-library '( ("ALL" Nil Nil (om-ais::NORMAL-AIS
+                                     om-ais::PRIME-AIS
+                                     om-ais::NORMAL-R-INVARIANT
+                                     om-ais::PRIME-R-INVARIANT
+                                     om-ais::NORMAL-QI-INVARIANT
+                                     om-ais::PRIME-QI-INVARIANT
+                                     om-ais::NORMAL-QRMI-INVARIANT
+                                     om-ais::PRIME-QRMI-INVARIANT) Nil)
 
-(in-package :OM-AIS)
+                     ("OPERATIONS" Nil Nil (om-ais::R-AIS
+                                            om-ais::RI-AIS
+                                            om-ais::I-AIS
+                                            om-ais::Q-AIS
+                                            om-ais::M-AIS
+                                            om-ais::IM-AIS
+                                            om-ais::QR-AIS
+                                            om-ais::0-AIS) Nil)
 
-;(require-library :omcs)
+                     ("CHORDS" Nil Nil (om-ais::AIS->CHORD
+                                        om-ais::AIS->CHORDS) Nil)
 
-(mapc 'om::compile&load (list (make-pathname  :directory (append (pathname-directory *load-pathname*) (list "sources")) :name "OM-AIS-functions" :type "lisp")))
-
-(om::fill-library '( ("ALL" Nil Nil (NORMAL-AIS PRIME-AIS NORMAL-R-INVARIANT PRIME-R-INVARIANT NORMAL-QI-INVARIANT PRIME-QI-INVARIANT NORMAL-QRMI-INVARIANT PRIME-QRMI-INVARIANT) Nil)
-
-                     ("OPERATIONS" Nil Nil (R-AIS RI-AIS I-AIS Q-AIS M-AIS IM-AIS QR-AIS 0-AIS) Nil)
-
-                     ("CHORDS" Nil Nil (AIS->CHORD AIS->CHORDS) Nil)
-
-                   ;  ("UTILS" Nil Nil (MOD12 T-0 INTERVALS-MOD12) Nil)
+                     ("UTILS" Nil Nil (om-ais::MC->PC
+                                       om-ais::INT-MOD12
+                                       om-ais::MOD-12
+                                       om-ais::AIS->NORMAL
+                                       om-ais::AIS->PRIME) Nil)
 
 ))
-
 
 (print "
 OM-AIS (All-Interval <Twelve-Tone> Series                                       
