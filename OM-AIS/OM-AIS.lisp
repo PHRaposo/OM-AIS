@@ -38,7 +38,7 @@
 
 (in-package :om)
 
-(defvar *OM-AIS-path* (make-pathname  :directory (append (pathname-directory *load-pathname*) (list "sources") (list "AIS"))))
+;(defvar *OM-AIS-path* (make-pathname  :directory (append (pathname-directory *load-pathname*) (list "sources") (list "AIS"))))
 
 (mapc 'compile&load (list
                          (make-pathname  :directory (append (pathname-directory *load-pathname*) (list "sources")) :name "package" :type "lisp")
