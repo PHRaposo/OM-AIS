@@ -1,0 +1,4 @@
+; OM File Header - Saved 2021/02/10 13:46:35
+; (6.17 :patc (om-make-point 367 13) (om-make-point 684 112) (om-make-point 682 435) "" 183 0 "2021/01/28 22:48:10" "2021/02/10 13:46:35")
+; End File Header
+(in-package :om)(load-lib-for (quote ("OM-AIS")))(setf *om-current-persistent* (om-load-patch1 "Scream-ais" (quote ((let ((box (om-load-boxcall (quote genfun) "PRIME-AIS-SCREAM" (quote om-ais::prime-ais-scream) (quote nil) (om-make-point 131 47) nil nil nil nil 1))) (when (fboundp (quote set-active)) (set-active box nil)) box) (let ((box (om-load-boxcall (quote genfun) "NORMAL-AIS-SCREAM" (quote om-ais::normal-ais-scream) (quote nil) (om-make-point 10 47) nil nil nil nil 1))) (when (fboundp (quote set-active)) (set-active box nil)) box))) (quote nil) nil 6.17))
