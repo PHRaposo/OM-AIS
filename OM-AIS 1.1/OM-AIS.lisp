@@ -102,7 +102,7 @@
 (print "
 OM-AIS (All-Interval <Twelve-Tone> Series                                       
    by Paulo Henrique Raposo - 2021
-   Version 1.0 - feb 10/2021
+   Version 1.1 - may 01/2021
 Icons from the series Lyric Suite 
        by Robert Motherwell
 ")
