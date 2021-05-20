@@ -302,7 +302,10 @@
 (om::defmethod! normal-AIS ()
 	:icon 013
 	:doc "Returns all 3856 normal form AIS."
- (read-text-file "3856-AIS"))
+ ;(read-text-file "3856-AIS"))
+(let ((first-half (read-text-file "NORMAL-A"))
+      (second-half (read-text-file "NORMAL-B")))
+ (om::x-append first-half second-half)))
 
 (om::defmethod! prime-AIS ()
 	:icon 013
