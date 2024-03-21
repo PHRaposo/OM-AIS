@@ -51,3 +51,7 @@ Updated:jan 12/2021 - Added normal and prime form QRMI invariants.
  UPDATE -> OM-AIS 1.2 - may 03/2022:
  - ADDED THE FUNCTION AIS->MELODIC-CONTOURS.	
 
+# Click the link below to download the repository:
+
+# [Download](https://github.com/PHRaposo/OM-AIS/archive/refs/heads/main.zip)
+
