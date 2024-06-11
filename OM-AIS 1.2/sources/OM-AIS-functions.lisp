@@ -187,12 +187,13 @@
   (om::om- (om::list-max get-midics) (om::list-min get-midics))))
 
 (defun sort-by-range (intervals-list max-range)
- (let ((ranges (remove-if #'(lambda (input) (> input max-range)) 
-                     (mapcar #'(lambda (input) (get-range input)) intervals-list))))
- (mapcar #'(lambda (input)
-  (nth input intervals-list)) 
-        (om::flat (mapcar #'(lambda (input)
-                       (tristan-positions ranges input)) (remove-duplicates (om::sort-list ranges)))))))
+ (let ((ranges (mapcar #'(lambda (input) (get-range input)) intervals-list)))
+  (mapcar #'(lambda (input)
+                    (nth input intervals-list)) 
+   (om::flat (mapcar #'(lambda (input)
+                                    (tristan-positions ranges input))
+                   (remove-if #'(lambda (input) (> input max-range))
+                    (remove-duplicates (om::sort-list ranges))))))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;REQUIRE OMCS ;;;   
